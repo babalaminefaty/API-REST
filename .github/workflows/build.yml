@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: whoami
-  build:
+  construction:
 
     runs-on: ubuntu-latest
 
