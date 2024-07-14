@@ -19,7 +19,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: cloange des sources depuis le repot
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -27,7 +26,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Generation du livrable qui sera deploye dans le serveur ici
     - name: ici jignore les tests pour aller vite
 
       run: mvn -Dmaven.test.skip=true -B package --file pom.xml
