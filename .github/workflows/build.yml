@@ -38,14 +38,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: ici jignore les tests pour aller vite
-
         run: mvn -Dmaven.test.skip=true -B package --file pom.xml
-               - name: copy file via ssh password
-               uses: appleboy/scp-action@v0.1.7
-               with:
-                 host: ${{ secrets.HOST }}
-                 username: ${{ secrets.USERNAME }}
-                 password: ${{ secrets.PASSWORD }}
-                 port: ${{ secrets.PORT }}
-                 source: "tests/a.txt,tests/b.txt"
-                 target: your_server_target_folder_pat
