@@ -13,17 +13,17 @@ on:
     branches: ["main"]
 
 jobs:
-  create-folder:
+  build:
     name: creation dun dossier
     runs-on: ubuntu-latest
     steps:
-      - name: ouverture de la connexion avec un hote distant
-        uses: appleboy/ssh-action@v1.0.3
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USERNAME}}
-          password: ${{secrets.SSH_PRIVATE_KEY}}
-          port: ${{secrets.PORT}}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
           script: whoami
   construction:
 
