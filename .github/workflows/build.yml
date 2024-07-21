@@ -41,7 +41,7 @@ jobs:
         run: mvn -Dmaven.test.skip=true -B package --file pom.xml
       - uses: actions/checkout@v4
       - name: copy file via ssh password
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
