@@ -20,10 +20,10 @@ jobs:
       - name: ouverture de la connexion avec un hote distant
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
           password: ${{secrets.SSH_PRIVATE_KEY}}
-          port: ${{ secrets.PORT }}
+          port: ${{secrets.PORT}}
           script: whoami
   construction:
 
