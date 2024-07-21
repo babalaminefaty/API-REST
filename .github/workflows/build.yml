@@ -14,7 +14,7 @@ on:
 
 jobs:
   build:
-    name: creation dun dossier
+    name: connexion avec le serveur EC2
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using ssh key
@@ -39,3 +39,13 @@ jobs:
           cache: maven
       - name: ici jignore les tests pour aller vite
         run: mvn -Dmaven.test.skip=true -B package --file pom.xml
+      - uses: actions/checkout@v4
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: "target/API-REST-0.0.1-SNAPSHOT.jar"
+          target: /home/ec2-user
