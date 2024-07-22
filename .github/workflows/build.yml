@@ -39,13 +39,15 @@ jobs:
           cache: maven
       - name: ici jignore les tests pour aller vite
         run: mvn -Dmaven.test.skip=true -B package --file pom.xml
+      - name: Renommer le JAR
+        run: mv target/*.jar target/API-REST-0.0.1-SNAPSHOT.jar
 
-      - name: copy file via ssh password
-        uses: appleboy/scp-action@v0.1.4
+#      - name: copy file via ssh password
+#        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          source: "target/API-REST-0.0.1-SNAPSHOT.jar"
-          target: /home/ec2-user
+#          source: "target/API-REST-0.0.1-SNAPSHOT.jar"
+#          target: /home/ec2-user
